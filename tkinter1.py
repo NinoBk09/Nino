@@ -12,4 +12,6 @@ label.pack()
 
 gumb= tk.Button(okno, text="stisni me", command=klikni)
 gumb.pack()
+
+print("znam uporabljati Github")
 okno.mainloop()
