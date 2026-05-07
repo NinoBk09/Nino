@@ -85,6 +85,8 @@ def nalozi():
 okno = tk.Tk()
 okno.title("polje")
 
+messagebox.showerror("HAHA", "HAHA, ZLOBEN SEM IN DELAM NA ISTI DATOTEKI KOT TI!")
+
 gumbi=[]
 igralec = "X"
 d=0
