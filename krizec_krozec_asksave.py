@@ -106,6 +106,7 @@ def nalozi():
                    
 okno = tk.Tk()
 okno.title("polje")
+okno.configure(bg="#f0f0f0")
 
 player1 = 0
 player2 = 0
@@ -117,39 +118,39 @@ okvir_gumbi = tk.Frame(okno)
 okvir_gumbi.pack(pady=10)
 
 for i in range(9):
-    gumb = tk.Button(okvir_gumbi, height=3, width=6, command=lambda i=i: klik(i))
-    gumb.grid(row=i//3, column=i%3)
+    gumb = tk.Button(okvir_gumbi, height=3, width=6, command=lambda i=i: klik(i), bg="#cccccc", font=("Arial", 15, "bold"))
+    gumb.grid(row=i//3, column=i%3,)
     gumbi.append(gumb)
 
 okvir_spodaj = tk.Frame(okno)
 okvir_spodaj.pack(pady=20)
 
-gumb1 = tk.Button(okvir_spodaj, height=3, width=9,bg="lightblue", command=reset, text="Nova igra")
-gumb1.grid(column=1, row=0)
+gumb1 = tk.Button(okvir_spodaj, height=3, width=9,bg="#3498db", command=reset, text="Nova igra", fg="white",  relief="flat", bd=0, highlightthickness=0,font=("Helvetica", 10, "bold"))
+gumb1.grid(column=1, row=0, padx=5)
 
-gumb_shrani = tk.Button(okvir_spodaj, height=3, width=9,bg="darkblue", fg="white", command=shrani, text="Shrani" )
-gumb_shrani.grid(column=2, row=0)
+gumb_shrani = tk.Button(okvir_spodaj, height=3, width=9,bg="#2ecc71", fg="white", command=shrani, text="Shrani", relief="flat", bd=0, font=("Helvetica", 10, "bold"), highlightthickness=0)
+gumb_shrani.grid(column=2, row=0, padx=5)
 
-gumb_nalozi = tk.Button(okvir_spodaj, text="Naloži", height=3, width=9, bg="red", fg="white", command=nalozi)
-gumb_nalozi.grid(column=3, row=0)
+gumb_nalozi = tk.Button(okvir_spodaj, text="Naloži", height=3, width=9, bg="#e74c3c", fg="white", command=nalozi, relief="flat", bd=0, font=("Helvetica", 10, "bold"), highlightthickness=0)
+gumb_nalozi.grid(column=3, row=0, padx=5)
 
 okvir_label = tk.Frame(okno)
-okvir_label.pack(pady=10)
+okvir_label.pack(pady=10,)
 
-label = tk.Label(okvir_label, text="", pady="10")
+label = tk.Label(okvir_label, text="", pady="10",font=("Helvetica", 14, "bold"))
 label.grid(column=2, row=1)
 
 okvir_rezultat = tk.Frame(okno)
 okvir_rezultat.pack()
 
-label_x = tk.Label(okvir_rezultat, text=f"X zmage: {player1}", height=3, width=9,)
-label_x.grid(row=0, column=0)
+label_x = tk.Label(okvir_rezultat, text=f"X zmage: {player1}", height=3, width=9, font="Segoe_UI",)
+label_x.grid(row=0,column=0, sticky="w")
 
-label_o = tk.Label(okvir_rezultat, text=f"O zmage: {player2}", height=3, width=9,)
-label_o.grid(row=1, column=0)
+label_o = tk.Label(okvir_rezultat, text=f"O zmage: {player2}", height=3, width=9, font="Segoe_UI")
+label_o.grid(row=1,column=0, sticky="w")
 
-label_izenaceno = tk.Label(okvir_rezultat, text=f"izenačeno: {dif}", height=3, width=9,)
-label_izenaceno.grid(row=2, column=0)
+label_izenaceno = tk.Label(okvir_rezultat, text=f"izenačeno: {dif}", height=3, width=9, font="Segoe_UI")
+label_izenaceno.grid(row=2,column=0, sticky="w")
 
 seznam = ["","","","","","","","",""]
 okno.mainloop()
