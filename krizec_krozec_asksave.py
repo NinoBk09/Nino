@@ -26,7 +26,7 @@ def klik(i):
     izenaceno()        
     zmagovalec=zmaga()
     if zmagovalec:
-        label.config(text=f"Zmaga {zmagovalec}", bg="lightgreen") 
+        label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
         for g in gumbi:
             g.config(state="disable")
 
@@ -47,8 +47,15 @@ def zmaga():
     return None
 
 def reset():
-    global igralec, seznam
-    igralec = "X"
+    global igralec, seznam, zacetek
+    
+    zacetek += 1
+    if zacetek%2 == 1:
+        igralec = "O"
+        label_zacetek.config(text=f"Začne: {igralec}")        
+    else:
+        igralec = "X"
+        label_zacetek.config(text=f"Začne: {igralec}") 
     label.config(text="")
     for gumb in gumbi:
         gumb.config(text="", state="normal")
@@ -56,6 +63,8 @@ def reset():
         if seznam[i] != "":
             seznam[i] = ""
     print(seznam)
+    label.config(bg="#f0f0f0")
+    
         
 def izenaceno():
     global seznam, dif, d
@@ -102,18 +111,22 @@ def nalozi():
     except:
         messagebox.showwarning("Error", "Problme pri nalaganju datoteke.")
         
-        
-                   
+                        
 okno = tk.Tk()
 okno.title("polje")
 okno.configure(bg="#f0f0f0")
 
+zacetek = 0
 player1 = 0
 player2 = 0
 dif = 0
 gumbi=[]
 igralec = "X"
 d=0
+
+label_zacetek = tk.Label(okno, text=f"Začne: {igralec}", height=3, width=9, font=("Arial", 15, "bold"), bg="#E6E6E6",relief="flat")
+label_zacetek.pack()
+
 okvir_gumbi = tk.Frame(okno)
 okvir_gumbi.pack(pady=10)
 
@@ -125,13 +138,13 @@ for i in range(9):
 okvir_spodaj = tk.Frame(okno)
 okvir_spodaj.pack(pady=20)
 
-gumb1 = tk.Button(okvir_spodaj, height=3, width=9,bg="#3498db", command=reset, text="Nova igra", fg="white",  relief="flat", bd=0, highlightthickness=0,font=("Helvetica", 10, "bold"))
+gumb1 = tk.Button(okvir_spodaj, height=3, width=9,bg="#687982", command=reset, text="Nova igra", fg="white",  relief="flat", bd=0, highlightthickness=0,font=("Helvetica", 10, "bold"))
 gumb1.grid(column=1, row=0, padx=5)
 
-gumb_shrani = tk.Button(okvir_spodaj, height=3, width=9,bg="#2ecc71", fg="white", command=shrani, text="Shrani", relief="flat", bd=0, font=("Helvetica", 10, "bold"), highlightthickness=0)
+gumb_shrani = tk.Button(okvir_spodaj, height=3, width=9,bg="#688271", fg="white", command=shrani, text="Shrani", relief="flat", bd=0, font=("Helvetica", 10, "bold"), highlightthickness=0)
 gumb_shrani.grid(column=2, row=0, padx=5)
 
-gumb_nalozi = tk.Button(okvir_spodaj, text="Naloži", height=3, width=9, bg="#e74c3c", fg="white", command=nalozi, relief="flat", bd=0, font=("Helvetica", 10, "bold"), highlightthickness=0)
+gumb_nalozi = tk.Button(okvir_spodaj, text="Naloži", height=3, width=9, bg="#716882", fg="white", command=nalozi, relief="flat", bd=0, font=("Helvetica", 10, "bold"), highlightthickness=0)
 gumb_nalozi.grid(column=3, row=0, padx=5)
 
 okvir_label = tk.Frame(okno)
