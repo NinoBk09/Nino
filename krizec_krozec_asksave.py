@@ -17,46 +17,111 @@ def izbira_O():
     dvavrsti_6 = [[0,3],[2,4],[7,8]]
     dvavrsti_7 = [[1,4],[6,8]]
     dvavrsti_8 = [[6,7],[0,4],[2,5]]
+
+#preveri blokado
+    for i in dvavrsti_0:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 0
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago             
     for i in dvavrsti_0:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 0
             if seznam[nasprotnik] == "":    
                 return nasprotnik
+#preveri blokado
+    for i in dvavrsti_1:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 1
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
     for i in dvavrsti_1:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 1
             if seznam[nasprotnik] == "":    
                 return nasprotnik
+#preveri blokado
+    for i in dvavrsti_2:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 2
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
     for i in dvavrsti_2:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 2
             if seznam[nasprotnik] == "":    
+                return nasprotnik            
+#preveri blokado            
+    for i in dvavrsti_3:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 3
+            if seznam[nasprotnik] == "":    
                 return nasprotnik
+#preveri zmago
     for i in dvavrsti_3:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 3
             if seznam[nasprotnik] == "":    
                 return nasprotnik
+#preveri blokado
+    for i in dvavrsti_4:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 4
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
     for i in dvavrsti_4:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 4
             if seznam[nasprotnik] == "":    
                 return nasprotnik
+#preveri blokado
+    for i in dvavrsti_5:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 5
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
     for i in dvavrsti_5:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 5
             if seznam[nasprotnik] == "":    
                 return nasprotnik
+#preveri blokado
+    for i in dvavrsti_6:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 6
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
     for i in dvavrsti_6:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 6
             if seznam[nasprotnik] == "":    
                 return nasprotnik
+#preveri blokado
+    for i in dvavrsti_7:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 7
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+
     for i in dvavrsti_7:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 7
             if seznam[nasprotnik] == "":    
                 return nasprotnik
+#preveri blokado
+    for i in dvavrsti_8:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 8
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
     for i in dvavrsti_8:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 8
