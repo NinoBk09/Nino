@@ -5,6 +5,70 @@ from tkinter.filedialog import askopenfile
 from tkinter import messagebox
 import random
 
+def izbira_O():
+    global seznam
+    nasprotnik = ""
+    dvavrsti_0 = [[3,6],[4,8],[1,2]]
+    dvavrsti_1 = [[0,2],[4,7]]
+    dvavrsti_2 = [[4,6],[5,8],[0,1]]
+    dvavrsti_3 = [[0,6],[4,5]]
+    dvavrsti_4 = [[1,7],[3,5],[0,8],[2,6]]
+    dvavrsti_5 = [[3,4],[2,8]]
+    dvavrsti_6 = [[0,3],[2,4],[7,8]]
+    dvavrsti_7 = [[1,4],[6,8]]
+    dvavrsti_8 = [[6,7],[0,4],[2,5]]
+    for i in dvavrsti_0:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 0
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    for i in dvavrsti_1:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 1
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    for i in dvavrsti_2:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 2
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    for i in dvavrsti_3:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 3
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    for i in dvavrsti_4:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 4
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    for i in dvavrsti_5:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 5
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    for i in dvavrsti_6:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 6
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    for i in dvavrsti_7:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 7
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    for i in dvavrsti_8:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 8
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    while True:
+        nasprotnik = random.randint(0,8)
+        if gumbi[nasprotnik]['text'] == '':
+            return nasprotnik
+        
+            
+
 def klik(i):    
     global gumbi, igralec, seznam, d, player1, player2, izenaceno, H
     stop = ""
@@ -14,13 +78,19 @@ def klik(i):
         stop = izenaceno()
         if stop == "JA":
             return None
-        z = 0
-        while z == 0:   
-            nasprotnik = random.randint(0,8)
-            if gumbi[nasprotnik]["text"] == "":
-                z+=1
-                seznam[nasprotnik] = "O"
-                gumbi[nasprotnik]["text"] = seznam[nasprotnik]
+        if stop == "KONEC":
+            zmagovalec=zmaga()
+            if zmagovalec:
+                label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
+                for g in gumbi:
+                    g.config(state="disable")
+            return
+            
+        nasprotnik = izbira_O()
+        seznam[nasprotnik] = "O"
+        gumbi[nasprotnik]["text"] = seznam[nasprotnik]
+
+        
         print(seznam)
         zmagovalec=zmaga()
         if zmagovalec:
@@ -229,15 +299,20 @@ def reset():
     
         
 def izenaceno():
-    global seznam, dif, d
+    global seznam, dif, d, player1
     if seznam.count("") == 0:
-        dif += 1
-        d['izenaceno'] = dif
-        label_izenaceno.config(text=f"izenačeno: {dif}")
-        label.config(text="Izenačeno", bg="yellow")
-        for g in gumbi:
-            g.config(state="disable")
-        return "JA"
+        z = zmaga()
+        if z == "X" or z =="O":
+            player1 -= 1
+            return "KONEC"
+        else:
+            dif += 1
+            d['izenaceno'] = dif
+            label_izenaceno.config(text=f"izenačeno: {dif}")
+            label.config(text="Izenačeno", bg="yellow")
+            for g in gumbi:
+                g.config(state="disable")
+            return "JA"
             
 def shrani():
     global d
