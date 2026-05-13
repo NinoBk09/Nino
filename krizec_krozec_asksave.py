@@ -7,18 +7,13 @@ import random
 
 def klik(i):    
     global gumbi, igralec, seznam, d, player1, player2, izenaceno, H
-    
+    stop = ""
     if gumbi[i]["text"] == "":
         seznam[i] = igralec
         gumbi[i]["text"] = seznam[i]
-        
-        izenaceno()        
-        zmagovalec=zmaga()
-        if zmagovalec:
-            label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
-            for g in gumbi:
-                g.config(state="disable")
-        
+        stop = izenaceno()
+        if stop == "JA":
+            return None
         z = 0
         while z == 0:   
             nasprotnik = random.randint(0,8)
@@ -26,6 +21,13 @@ def klik(i):
                 z+=1
                 seznam[nasprotnik] = "O"
                 gumbi[nasprotnik]["text"] = seznam[nasprotnik]
+        print(seznam)
+        zmagovalec=zmaga()
+        if zmagovalec:
+            label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
+            for g in gumbi:
+                g.config(state="disable")
+
 # h za X 
         if i == 0:
             if seznam[1] == "X" or seznam[1] == "":
@@ -183,7 +185,6 @@ def klik(i):
         print(f"h je {H}")
     
     d = {
-                 'navrsti': igralec,
                  'stanje': seznam,
                  'zmaga_X': player1,
                  'zmaga_y': player2,
@@ -193,20 +194,23 @@ def klik(i):
               
         
 def zmaga():
-    global player1, player2
+    global gumbi, player1, player2
     kombinacije = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     for k in kombinacije:
-        if gumbi[k[0]]["text"] == gumbi[k[1]]["text"] == gumbi[k[2]]["text"] != "":
-            if igralec == "O":
-                player1 += 1
-                d['zmaga_x'] = player1
-                label_x.config(text=f"X zmage: {player1}")
-            elif igralec == "X":
-                player2 += 1
-                d['zmaga_y'] = player2
-                label_o.config(text=f"O zmage: {player2}")
-            return gumbi[k[0]]["text"]
+        if gumbi[k[0]]["text"] == "X" and gumbi[k[1]]["text"] == "X" and gumbi[k[2]]["text"] == "X":
+            player1 += 1
+            d['zmaga_x'] = player1
+            label_x.config(text=f"X zmage: {player1}")
+            return "X"
+    for k in kombinacije:
+        if gumbi[k[0]]["text"] == "O" and gumbi[k[1]]["text"] == "O" and gumbi[k[2]]["text"] == "O":
+            player2 += 1
+            d['zmaga_y'] = player2
+            label_o.config(text=f"O zmage: {player2}")
+            return "O"
     return None
+        
+    
 
 def reset():
     global igralec, seznam, zacetek, H
@@ -233,9 +237,19 @@ def izenaceno():
         label.config(text="Izenačeno", bg="yellow")
         for g in gumbi:
             g.config(state="disable")
+        return "JA"
             
 def shrani():
     global d
+    
+    d = {
+        'stanje': seznam,
+        'zmaga_x': player1,
+        'zmaga_y': player2,
+        'izenaceno': dif,
+        'H': H
+        }
+    
     files = [('JSON dokument', '*.json'), ('Vse datoteke', '*.*')]
     file = asksaveasfile(filetypes=files, defaultextension=".json")
     json.dump(d,file)
@@ -243,31 +257,39 @@ def shrani():
     label.config(text="Shranjeno", bg="lightgreen")
 
 def nalozi():
-    global d, igralec, seznam, dif, player2, player1
-    try:
-        file = askopenfile(filetypes=[('JSON dokument', '*.json'), ('Vse datoteke', '*.*')])
-        d = json.load(file)
-        igralec = d['navrsti']
-        seznam = d['stanje']
-        if not zmaga:
+    global d, seznam, dif, player2, player1, H
+    file = askopenfile(filetypes=[('JSON dokument', '*.json'), ('Vse datoteke', '*.*')])
+    if file:
+        try: 
+            d = json.load(file)
+            seznam = d['stanje']
             for i in range(9):
-                gumbi[i].config(text=seznam[i],state="normal")
-        label_izenaceno.config(text=f"izenačeno: {d['izenaceno']}")
-        label_o.config(text=f"O zmage: {d['zmaga_y']}")
-        label_x.config(text=f"X zmage: {d['zmaga_x']}")
-        player1 = d['zmaga_x']
-        player2 = d['zmaga_y']
-        dif = d['izenaceno']
-        
-        label.config(text="datoteka uspešno naložena", bg="lightgreen")
-    except FileNotFoundError:
-        messagebox.showwarning("Error", "Datoteke nismo našli, nalagam novo.")
-        d = {
-                 'navrsti': igralec,
-                 'stanje': seznam
-            }
-    except:
-        messagebox.showwarning("Error", "Problme pri nalaganju datoteke.")
+                    gumbi[i].config(text=seznam[i],state="normal")
+            z = zmaga()
+            if z == "X" or z == "O":
+                seznam = ["","","","","","","","",""]
+                for i in range(9):
+                    gumbi[i].config(text=seznam[i],state="normal")
+            label_izenaceno.config(text=f"izenačeno: {d['izenaceno']}")
+            label_o.config(text=f"O zmage: {d['zmaga_y']}")
+            label_x.config(text=f"X zmage: {d['zmaga_x']}")
+            player1 = d['zmaga_x']
+            player2 = d['zmaga_y']
+            dif = d['izenaceno']
+            H = d['H'] 
+            label.config(text="datoteka uspešno naložena", bg="lightgreen", fg="white")
+            file.close()
+        except FileNotFoundError:
+            messagebox.showwarning("Error", "Datoteke nismo našli, nalagam novo.")
+            d = {
+                     'stanje': seznam,
+                     'zmaga_X': player1,
+                     'zmaga_y': player2,
+                     'izenaceno': dif,
+                     'H': H,
+                }
+        except:
+            messagebox.showwarning("Error", "Problme pri nalaganju datoteke.")
         
                         
 okno = tk.Tk()
