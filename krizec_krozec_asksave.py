@@ -18,46 +18,22 @@ def izbira_O():
     dvavrsta_7 = [[1,4],[6,8]]
     dvavrsta_8 = [[6,7],[0,4],[2,5]]
 
-#preveri blokado
-    for i in dvavrsta_0:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 0
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
 #preveri zmago             
     for i in dvavrsta_0:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 0
             if seznam[nasprotnik] == "":    
                 return nasprotnik
-#preveri blokado
-    for i in dvavrsta_1:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 1
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
 #preveri zmago
     for i in dvavrsta_1:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 1
             if seznam[nasprotnik] == "":    
                 return nasprotnik
-#preveri blokado
-    for i in dvavrsta_2:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 2
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
 #preveri zmago
     for i in dvavrsta_2:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 2
-            if seznam[nasprotnik] == "":    
-                return nasprotnik            
-#preveri blokado            
-    for i in dvavrsta_3:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 3
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
@@ -66,22 +42,10 @@ def izbira_O():
             nasprotnik = 3
             if seznam[nasprotnik] == "":    
                 return nasprotnik
-#preveri blokado
-    for i in dvavrsta_4:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 4
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
 #preveri zmago
     for i in dvavrsta_4:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 4
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri blokado
-    for i in dvavrsta_5:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 5
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
@@ -90,22 +54,10 @@ def izbira_O():
             nasprotnik = 5
             if seznam[nasprotnik] == "":    
                 return nasprotnik
-#preveri blokado
-    for i in dvavrsta_6:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 6
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
 #preveri zmago
     for i in dvavrsta_6:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 6
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri blokado
-    for i in dvavrsta_7:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 7
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
@@ -115,15 +67,69 @@ def izbira_O():
             nasprotnik = 7
             if seznam[nasprotnik] == "":    
                 return nasprotnik
-#preveri blokado
-    for i in dvavrsta_8:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 8
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
 #preveri zmago
     for i in dvavrsta_8:
         if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 8
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_0:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 0
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+
+#preveri blokado
+    for i in dvavrsta_1:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 1
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_2:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 2
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado            
+    for i in dvavrsta_3:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 3
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+
+
+#preveri blokado
+    for i in dvavrsta_4:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 4
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_5:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 5
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+
+#preveri blokado
+    for i in dvavrsta_6:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 6
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+
+
+#preveri blokado
+    for i in dvavrsta_7:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 7
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_8:
+        if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 8
             if seznam[nasprotnik] == "":    
                 return nasprotnik
@@ -131,13 +137,14 @@ def izbira_O():
         nasprotnik = random.randint(0,8)
         if gumbi[nasprotnik]['text'] == '':
             return nasprotnik
-        
-            
-
+    
 def klik(i):    
-    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H, vrsta, restart, skok
+    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H, vrsta, restart, skok, hej
+    H = 0
     stop = ""
+    p = 0
     JA = 0
+    vrste = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
     if vrsta == 1:
         vrsta = 0
         if gumbi[i]["text"] == "":
@@ -153,7 +160,15 @@ def klik(i):
                     label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
                     for g in gumbi:
                         g.config(state="disable")
-                return
+                    return
+#preveri zmago
+    zmagovalec=zmaga()
+    if zmagovalec:
+        label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
+        for g in gumbi:
+            g.config(state="disable")
+        JA = 0
+#-----------------
     if JA == 1 or skok == 0:
         skok = 1
         if vrsta == 0:
@@ -163,34 +178,32 @@ def klik(i):
             stop = izenaceno()
             if stop == "JA":
                 return None
+    for i in vrste:
+        if (gumbi[i[0]]['text'] == "X" and gumbi[i[1]]['text'] == "" and gumbi[i[2]]['text'] == "") or (gumbi[i[1]]['text'] == "X" and gumbi[i[0]]['text'] == "" and gumbi[i[2]]['text'] == "") or (gumbi[i[2]]['text'] == "X" and gumbi[i[0]]['text'] == "" and gumbi[i[1]]['text'] == ""):
+            H+=1
+        if (gumbi[i[0]]['text'] == "X" and gumbi[i[1]]['text'] == "X" and gumbi[i[2]]['text'] == "") or (gumbi[i[1]]['text'] == "X" and gumbi[i[2]]['text'] == "X" and gumbi[i[0]]['text'] == "") or (gumbi[i[2]]['text'] == "X" and gumbi[i[1]]['text'] == "X" and gumbi[i[1]]['text'] == ""):
+            H+=10
+        if gumbi[i[0]]['text'] == "X" and gumbi[i[1]]['text'] == "X" and gumbi[i[2]]['text'] == "X":
+            H+=99999
+        if (gumbi[i[0]]['text'] == "O" and gumbi[i[1]]['text'] == "" and gumbi[i[2]]['text'] == "") or (gumbi[i[1]]['text'] == "O" and gumbi[i[0]]['text'] == "" and gumbi[i[2]]['text'] == "") or (gumbi[i[2]]['text'] == "O" and gumbi[i[0]]['text'] == "" and gumbi[i[1]]['text'] == ""):
+            H-=1
+        if (gumbi[i[0]]['text'] == "O" and gumbi[i[1]]['text'] == "O" and gumbi[i[2]]['text'] == "") or (gumbi[i[1]]['text'] == "O" and gumbi[i[2]]['text'] == "O" and gumbi[i[0]]['text'] == "") or (gumbi[i[2]]['text'] == "O" and gumbi[i[1]]['text'] == "O" and gumbi[i[1]]['text'] == ""):
+            H-=10
+        if gumbi[i[0]]['text'] == "O" and gumbi[i[1]]['text'] == "O" and gumbi[i[2]]['text'] == "O":
+            H-=99999
+    print(f"H je: {H}, seznam: { seznam }")
+#stranski popravki
     vrsta = 1
-            
-    print(seznam)
+#preveri zmago
+    if JA == 0:
+        return
     zmagovalec=zmaga()
     if zmagovalec:
         label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
         for g in gumbi:
             g.config(state="disable")
-
-    vrste = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
-    for i in vrste:
-        if vrste.count("X") == 1:
-            if seznam.count("O") == 0:
-                H+=1
-        if vrste.count("X") == 2:
-            if seznam.count("O") == 0:
-                H+=10
-        if vrste.count("X") == 3:
-            H+=99999
-        if vrste.count("O") == 1:
-            if seznam.count("X") == 0:
-                H-=1
-        if vrste.count("O") == 2:
-            if seznam.count("X") == 0:
-                H-=10
-        if vrste.count("O") == 3:
-            H-=99999
-    print(H)
+        return
+#-----------------
     
     d = {
         'stanje': seznam,
@@ -203,7 +216,7 @@ def klik(i):
         }
         
 def zmaga():
-    global gumbi, player1, player2
+    global gumbi, player1, player2, vrsta, hej
     kombinacije = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     for k in kombinacije:
         if gumbi[k[0]]["text"] == "X" and gumbi[k[1]]["text"] == "X" and gumbi[k[2]]["text"] == "X":
@@ -222,7 +235,8 @@ def zmaga():
     
 
 def reset():
-    global igralec, seznam, H, restart, vrsta, skok
+    global igralec, seznam, H, restart, vrsta, skok, hej
+    hej = ""
     if restart == 1:
         zacne = "O"
         vrsta = 0
@@ -327,6 +341,7 @@ okno = tk.Tk()
 okno.title("polje")
 okno.configure(bg="#f0f0f0")
 
+hej = ""
 skok = 1
 restart = 1
 vrsta = 1
