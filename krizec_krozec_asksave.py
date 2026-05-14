@@ -135,11 +135,13 @@ def izbira_O():
             
 
 def klik(i):    
-    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H, vrsta
+    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H, vrsta, restart, skok
     stop = ""
-    if vrsta%2 == 0:
-        vrsta += 1
+    JA = 0
+    if vrsta == 1:
+        vrsta = 0
         if gumbi[i]["text"] == "":
+            JA+=1
             seznam[i] = igralec
             gumbi[i]["text"] = seznam[i]
             stop = izenaceno()
@@ -152,188 +154,53 @@ def klik(i):
                     for g in gumbi:
                         g.config(state="disable")
                 return
-    if vrsta%2 == 1:
-        vrsta += 1
-        nasprotnik = izbira_O()
-        seznam[nasprotnik] = "O"
-        gumbi[nasprotnik]["text"] = seznam[nasprotnik]
-        
-        stop = izenaceno()
-        if stop == "JA":
-            return None
+    if JA == 1 or skok == 0:
+        skok = 1
+        if vrsta == 0:
+            nasprotnik = izbira_O()
+            seznam[nasprotnik] = "O"
+            gumbi[nasprotnik]["text"] = seznam[nasprotnik]
+            stop = izenaceno()
+            if stop == "JA":
+                return None
+    vrsta = 1
+            
+    print(seznam)
+    zmagovalec=zmaga()
+    if zmagovalec:
+        label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
+        for g in gumbi:
+            g.config(state="disable")
 
-        
-        print(seznam)
-        zmagovalec=zmaga()
-        if zmagovalec:
-            label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
-            for g in gumbi:
-                g.config(state="disable")
-
-# h za X 
-        if i == 0:
-            if seznam[1] == "X" or seznam[1] == "":
-                if seznam[2] == "X" or seznam[2] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-            if seznam[3] == "X" or seznam[3] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1           
-        if i == 1:
-            if seznam[0] == "X" or seznam[0] == "":
-                if seznam[2] == "X" or seznam[2] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[7] == "X" or seznam[7] == "":
-                    H+=1       
-        if i == 2:
-            if seznam[1] == "X" or seznam[1] == "":
-                if seznam[0] == "X" or seznam[0] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1
-            if seznam[5] == "X" or seznam[5] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1  
-        if i == 3:
-            if seznam[0] == "X" or seznam[0] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[5] == "X" or seznam[5] == "":
-                    H+=1  
-        if i == 4:
-            if seznam[0] == "X" or seznam[0] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-            if seznam[1] == "X" or seznam[1] == "":
-                if seznam[7] == "X" or seznam[7] == "":
-                    H+=1
-            if seznam[2] == "X" or seznam[2] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1
-            if seznam[3] == "X" or seznam[3] == "":
-                if seznam[5] == "X" or seznam[5] == "":
-                    H+=1
-        if i == 5:
-            if seznam[2] == "X" or seznam[2] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-            if seznam[3] == "X" or seznam[3] == "":
-                if seznam[5] == "X" or seznam[5] == "":
-                    H+=1
-        if i == 6:
-            if seznam[0] == "X" or seznam[0] == "":
-                if seznam[3] == "X" or seznam[3] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[2] == "X" or seznam[2] == "":
-                    H+=1
-            if seznam[7] == "X" or seznam[7] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-        if i == 7:
-            if seznam[6] == "X" or seznam[6] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-            if seznam[1] == "X" or seznam[1] == "":
-                if seznam[4] == "X" or seznam[4] == "":
-                    H+=1
-        if i == 8:
-            if seznam[2] == "X" or seznam[2] == "":
-                if seznam[5] == "X" or seznam[5] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[0] == "X" or seznam[0] == "":
-                    H+=1
-            if seznam[7] == "X" or seznam[7] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1
-# h za O
-        if  nasprotnik == 1:
-            if seznam[0] == "O" or seznam[0] == "":
-                if seznam[2] == "O" or seznam[2] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[7] == "O" or seznam[7] == "":
-                    H-=1       
-        if nasprotnik == 2:
-            if seznam[1] == "O" or seznam[1] == "":
-                if seznam[0] == "O" or seznam[0] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[6] == "O" or seznam[6] == "":
-                    H-=1
-            if seznam[5] == "O" or seznam[5] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1  
-        if nasprotnik == 3:
-            if seznam[0] == "O" or seznam[0] == "":
-                if seznam[6] == "O" or seznam[6] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[5] == "O" or seznam[5] == "":
-                    H-=1  
-        if nasprotnik == 4:
-            if seznam[0] == "O" or seznam[0] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1
-            if seznam[1] == "O" or seznam[1] == "":
-                if seznam[7] == "O" or seznam[7] == "":
-                    H-=1
-            if seznam[2] == "O" or seznam[2] == "":
-                if seznam[6] == "O" or seznam[6] == "":
-                    H-=1
-            if seznam[3] == "O" or seznam[3] == "":
-                if seznam[5] == "O" or seznam[5] == "":
-                    H-=1
-        if nasprotnik == 5:
-            if seznam[2] == "O" or seznam[2] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1
-            if seznam[3] == "O" or seznam[3] == "":
-                if seznam[5] == "O" or seznam[5] == "":
-                    H-=1
-        if nasprotnik == 6:
-            if seznam[0] == "O" or seznam[0] == "":
-                if seznam[3] == "O" or seznam[3] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[2] == "O" or seznam[2] == "":
-                    H-=1
-            if seznam[7] == "O" or seznam[7] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1
-        if nasprotnik == 7:
-            if seznam[6] == "O" or seznam[6] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1
-            if seznam[1] == "O" or seznam[1] == "":
-                if seznam[4] == "O" or seznam[4] == "":
-                    H-=1
-        if nasprotnik == 8:
-            if seznam[2] == "O" or seznam[2] == "":
-                if seznam[5] == "O" or seznam[5] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[0] == "O" or seznam[0] == "":
-                    H-=1
-            if seznam[7] == "O" or seznam[7] == "":
-                if seznam[6] == "O" or seznam[6] == "":
-                    H-=1
-        print(f"h je {H}")
+    vrste = [[0,1,2], [3,4,5], [6,7,8], [0,3,6], [1,4,7], [2,5,8], [0,4,8], [2,4,6]]
+    for i in vrste:
+        if vrste.count("X") == 1:
+            if seznam.count("O") == 0:
+                H+=1
+        if vrste.count("X") == 2:
+            if seznam.count("O") == 0:
+                H+=10
+        if vrste.count("X") == 3:
+            H+=99999
+        if vrste.count("O") == 1:
+            if seznam.count("X") == 0:
+                H-=1
+        if vrste.count("O") == 2:
+            if seznam.count("X") == 0:
+                H-=10
+        if vrste.count("O") == 3:
+            H-=99999
+    print(H)
     
     d = {
-                 'stanje': seznam,
-                 'zmaga_X': player1,
-                 'zmaga_y': player2,
-                 'izenaceno': dif,
-                 'H': H
-            }
-              
+        'stanje': seznam,
+        'zmaga_X': player1,
+        'zmaga_y': player2,
+        'izenaceno': dif,
+        'H': H,
+        'na_vrsti': vrsta,
+        'zacne': restart,
+        }
         
 def zmaga():
     global gumbi, player1, player2
@@ -355,14 +222,16 @@ def zmaga():
     
 
 def reset():
-    global igralec, seznam, H, restart, vrsta
-    if restart %2 == 0:
+    global igralec, seznam, H, restart, vrsta, skok
+    if restart == 1:
         zacne = "O"
-        vrsta = 1
+        vrsta = 0
+        skok = 0
+        restart = 0
     else:
         zacne = "X"
-        vrsta = 2
-    restart+=1
+        vrsta = 1
+        restart = 1
     label_zacetek.config(text=f"Začne: {zacne}") 
     label.config(text="")
     for gumb in gumbi:
@@ -373,6 +242,16 @@ def reset():
     print(seznam)
     label.config(bg="#f0f0f0")
     H = 0
+    d = {
+            'stanje': seznam,
+            'zmaga_X': player1,
+            'zmaga_y': player2,
+            'izenaceno': dif,
+            'H': H,
+            'na_vrsti': vrsta,
+            'zacne': restart,
+        }
+              
     
         
 def izenaceno():
@@ -448,8 +327,9 @@ okno = tk.Tk()
 okno.title("polje")
 okno.configure(bg="#f0f0f0")
 
-restart = 0
-vrsta = 0
+skok = 1
+restart = 1
+vrsta = 1
 H=0
 nasprotnik = ""
 player1 = 0
