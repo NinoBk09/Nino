@@ -5,27 +5,171 @@ from tkinter.filedialog import askopenfile
 from tkinter import messagebox
 import random
 
-def klik(i):    
-    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H
-    
-    if gumbi[i]["text"] == "":
-        seznam[i] = igralec
-        gumbi[i]["text"] = seznam[i]
+def izbira_O():
+    global seznam
+    nasprotnik = ""
+    dvavrsta_0 = [[3,6],[4,8],[1,2]]
+    dvavrsta_1 = [[0,2],[4,7]]
+    dvavrsta_2 = [[4,6],[5,8],[0,1]]
+    dvavrsta_3 = [[0,6],[4,5]]
+    dvavrsta_4 = [[1,7],[3,5],[0,8],[2,6]]
+    dvavrsta_5 = [[3,4],[2,8]]
+    dvavrsta_6 = [[0,3],[2,4],[7,8]]
+    dvavrsta_7 = [[1,4],[6,8]]
+    dvavrsta_8 = [[6,7],[0,4],[2,5]]
+
+#preveri blokado
+    for i in dvavrsta_0:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 0
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago             
+    for i in dvavrsta_0:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 0
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_1:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 1
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+    for i in dvavrsta_1:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 1
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_2:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 2
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+    for i in dvavrsta_2:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 2
+            if seznam[nasprotnik] == "":    
+                return nasprotnik            
+#preveri blokado            
+    for i in dvavrsta_3:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 3
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+    for i in dvavrsta_3:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 3
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_4:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 4
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+    for i in dvavrsta_4:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 4
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_5:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 5
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+    for i in dvavrsta_5:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 5
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_6:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 6
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+    for i in dvavrsta_6:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 6
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_7:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 7
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+
+    for i in dvavrsta_7:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 7
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri blokado
+    for i in dvavrsta_8:
+        if seznam[i[0]] == seznam[i[1]] == "X":
+            nasprotnik = 8
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+#preveri zmago
+    for i in dvavrsta_8:
+        if seznam[i[0]] == seznam[i[1]] == "O":
+            nasprotnik = 8
+            if seznam[nasprotnik] == "":    
+                return nasprotnik
+    while True:
+        nasprotnik = random.randint(0,8)
+        if gumbi[nasprotnik]['text'] == '':
+            return nasprotnik
         
-        izenaceno()        
+            
+
+def klik(i):    
+    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H, vrsta
+    stop = ""
+    if vrsta%2 == 0:
+        vrsta += 1
+        if gumbi[i]["text"] == "":
+            seznam[i] = igralec
+            gumbi[i]["text"] = seznam[i]
+            stop = izenaceno()
+            if stop == "JA":
+                return None
+            if stop == "KONEC":
+                zmagovalec=zmaga()
+                if zmagovalec:
+                    label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
+                    for g in gumbi:
+                        g.config(state="disable")
+                return
+    if vrsta%2 == 1:
+        vrsta += 1
+        nasprotnik = izbira_O()
+        seznam[nasprotnik] = "O"
+        gumbi[nasprotnik]["text"] = seznam[nasprotnik]
+        
+        stop = izenaceno()
+        if stop == "JA":
+            return None
+
+        
+        print(seznam)
         zmagovalec=zmaga()
         if zmagovalec:
             label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
             for g in gumbi:
                 g.config(state="disable")
-        
-        z = 0
-        while z == 0:   
-            nasprotnik = random.randint(0,8)
-            if gumbi[nasprotnik]["text"] == "":
-                z+=1
-                seznam[nasprotnik] = "O"
-                gumbi[nasprotnik]["text"] = seznam[nasprotnik]
+
 # h za X 
         if i == 0:
             if seznam[1] == "X" or seznam[1] == "":
@@ -183,7 +327,6 @@ def klik(i):
         print(f"h je {H}")
     
     d = {
-                 'navrsti': igralec,
                  'stanje': seznam,
                  'zmaga_X': player1,
                  'zmaga_y': player2,
@@ -193,26 +336,34 @@ def klik(i):
               
         
 def zmaga():
-    global player1, player2
+    global gumbi, player1, player2
     kombinacije = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
     for k in kombinacije:
-        if gumbi[k[0]]["text"] == gumbi[k[1]]["text"] == gumbi[k[2]]["text"] != "":
-            if igralec == "O":
-                player1 += 1
-                d['zmaga_x'] = player1
-                label_x.config(text=f"X zmage: {player1}")
-            elif igralec == "X":
-                player2 += 1
-                d['zmaga_y'] = player2
-                label_o.config(text=f"O zmage: {player2}")
-            return gumbi[k[0]]["text"]
+        if gumbi[k[0]]["text"] == "X" and gumbi[k[1]]["text"] == "X" and gumbi[k[2]]["text"] == "X":
+            player1 += 1
+            d['zmaga_x'] = player1
+            label_x.config(text=f"X zmage: {player1}")
+            return "X"
+    for k in kombinacije:
+        if gumbi[k[0]]["text"] == "O" and gumbi[k[1]]["text"] == "O" and gumbi[k[2]]["text"] == "O":
+            player2 += 1
+            d['zmaga_y'] = player2
+            label_o.config(text=f"O zmage: {player2}")
+            return "O"
     return None
+        
+    
 
 def reset():
-    global igralec, seznam, zacetek, H
-    
-    igralec = "X"
-    label_zacetek.config(text=f"Začne: {igralec}") 
+    global igralec, seznam, H, restart, vrsta
+    if restart %2 == 0:
+        zacne = "O"
+        vrsta = 1
+    else:
+        zacne = "X"
+        vrsta = 2
+    restart+=1
+    label_zacetek.config(text=f"Začne: {zacne}") 
     label.config(text="")
     for gumb in gumbi:
         gumb.config(text="", state="normal")
@@ -225,17 +376,32 @@ def reset():
     
         
 def izenaceno():
-    global seznam, dif, d
+    global seznam, dif, d, player1, vrsta
     if seznam.count("") == 0:
-        dif += 1
-        d['izenaceno'] = dif
-        label_izenaceno.config(text=f"izenačeno: {dif}")
-        label.config(text="Izenačeno", bg="yellow")
-        for g in gumbi:
-            g.config(state="disable")
+        z = zmaga()
+        if z == "X" or z =="O":
+            player1 -= 1
+            return "KONEC"
+        else:
+            dif += 1
+            d['izenaceno'] = dif
+            label_izenaceno.config(text=f"izenačeno: {dif}")
+            label.config(text="Izenačeno", bg="yellow")
+            for g in gumbi:
+                g.config(state="disable")
+            return "JA"
             
 def shrani():
     global d
+    
+    d = {
+        'stanje': seznam,
+        'zmaga_x': player1,
+        'zmaga_y': player2,
+        'izenaceno': dif,
+        'H': H
+        }
+    
     files = [('JSON dokument', '*.json'), ('Vse datoteke', '*.*')]
     file = asksaveasfile(filetypes=files, defaultextension=".json")
     json.dump(d,file)
@@ -243,40 +409,49 @@ def shrani():
     label.config(text="Shranjeno", bg="lightgreen")
 
 def nalozi():
-    global d, igralec, seznam, dif, player2, player1
-    try:
-        file = askopenfile(filetypes=[('JSON dokument', '*.json'), ('Vse datoteke', '*.*')])
-        d = json.load(file)
-        igralec = d['navrsti']
-        seznam = d['stanje']
-        if not zmaga:
+    global d, seznam, dif, player2, player1, H
+    file = askopenfile(filetypes=[('JSON dokument', '*.json'), ('Vse datoteke', '*.*')])
+    if file:
+        try: 
+            d = json.load(file)
+            seznam = d['stanje']
             for i in range(9):
-                gumbi[i].config(text=seznam[i],state="normal")
-        label_izenaceno.config(text=f"izenačeno: {d['izenaceno']}")
-        label_o.config(text=f"O zmage: {d['zmaga_y']}")
-        label_x.config(text=f"X zmage: {d['zmaga_x']}")
-        player1 = d['zmaga_x']
-        player2 = d['zmaga_y']
-        dif = d['izenaceno']
-        
-        label.config(text="datoteka uspešno naložena", bg="lightgreen")
-    except FileNotFoundError:
-        messagebox.showwarning("Error", "Datoteke nismo našli, nalagam novo.")
-        d = {
-                 'navrsti': igralec,
-                 'stanje': seznam
-            }
-    except:
-        messagebox.showwarning("Error", "Problme pri nalaganju datoteke.")
+                    gumbi[i].config(text=seznam[i],state="normal")
+            z = zmaga()
+            if z == "X" or z == "O":
+                seznam = ["","","","","","","","",""]
+                for i in range(9):
+                    gumbi[i].config(text=seznam[i],state="normal")
+            label_izenaceno.config(text=f"izenačeno: {d['izenaceno']}")
+            label_o.config(text=f"O zmage: {d['zmaga_y']}")
+            label_x.config(text=f"X zmage: {d['zmaga_x']}")
+            player1 = d['zmaga_x']
+            player2 = d['zmaga_y']
+            dif = d['izenaceno']
+            H = d['H'] 
+            label.config(text="datoteka uspešno naložena", bg="lightgreen", fg="white")
+            file.close()
+        except FileNotFoundError:
+            messagebox.showwarning("Error", "Datoteke nismo našli, nalagam novo.")
+            d = {
+                     'stanje': seznam,
+                     'zmaga_X': player1,
+                     'zmaga_y': player2,
+                     'izenaceno': dif,
+                     'H': H,
+                }
+        except:
+            messagebox.showwarning("Error", "Problme pri nalaganju datoteke.")
         
                         
 okno = tk.Tk()
 okno.title("polje")
 okno.configure(bg="#f0f0f0")
 
+restart = 0
+vrsta = 0
 H=0
 nasprotnik = ""
-zacetek = 0
 player1 = 0
 player2 = 0
 dif = 0
