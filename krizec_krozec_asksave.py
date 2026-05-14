@@ -8,121 +8,121 @@ import random
 def izbira_O():
     global seznam
     nasprotnik = ""
-    dvavrsti_0 = [[3,6],[4,8],[1,2]]
-    dvavrsti_1 = [[0,2],[4,7]]
-    dvavrsti_2 = [[4,6],[5,8],[0,1]]
-    dvavrsti_3 = [[0,6],[4,5]]
-    dvavrsti_4 = [[1,7],[3,5],[0,8],[2,6]]
-    dvavrsti_5 = [[3,4],[2,8]]
-    dvavrsti_6 = [[0,3],[2,4],[7,8]]
-    dvavrsti_7 = [[1,4],[6,8]]
-    dvavrsti_8 = [[6,7],[0,4],[2,5]]
+    dvavrsta_0 = [[3,6],[4,8],[1,2]]
+    dvavrsta_1 = [[0,2],[4,7]]
+    dvavrsta_2 = [[4,6],[5,8],[0,1]]
+    dvavrsta_3 = [[0,6],[4,5]]
+    dvavrsta_4 = [[1,7],[3,5],[0,8],[2,6]]
+    dvavrsta_5 = [[3,4],[2,8]]
+    dvavrsta_6 = [[0,3],[2,4],[7,8]]
+    dvavrsta_7 = [[1,4],[6,8]]
+    dvavrsta_8 = [[6,7],[0,4],[2,5]]
 
 #preveri blokado
-    for i in dvavrsti_0:
+    for i in dvavrsta_0:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 0
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago             
-    for i in dvavrsti_0:
+    for i in dvavrsta_0:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 0
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri blokado
-    for i in dvavrsti_1:
+    for i in dvavrsta_1:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 1
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
-    for i in dvavrsti_1:
+    for i in dvavrsta_1:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 1
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri blokado
-    for i in dvavrsti_2:
+    for i in dvavrsta_2:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 2
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
-    for i in dvavrsti_2:
+    for i in dvavrsta_2:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 2
             if seznam[nasprotnik] == "":    
                 return nasprotnik            
 #preveri blokado            
-    for i in dvavrsti_3:
+    for i in dvavrsta_3:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 3
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
-    for i in dvavrsti_3:
+    for i in dvavrsta_3:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 3
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri blokado
-    for i in dvavrsti_4:
+    for i in dvavrsta_4:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 4
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
-    for i in dvavrsti_4:
+    for i in dvavrsta_4:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 4
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri blokado
-    for i in dvavrsti_5:
+    for i in dvavrsta_5:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 5
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
-    for i in dvavrsti_5:
+    for i in dvavrsta_5:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 5
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri blokado
-    for i in dvavrsti_6:
+    for i in dvavrsta_6:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 6
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
-    for i in dvavrsti_6:
+    for i in dvavrsta_6:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 6
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri blokado
-    for i in dvavrsti_7:
+    for i in dvavrsta_7:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 7
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
 
-    for i in dvavrsti_7:
+    for i in dvavrsta_7:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 7
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri blokado
-    for i in dvavrsti_8:
+    for i in dvavrsta_8:
         if seznam[i[0]] == seznam[i[1]] == "X":
             nasprotnik = 8
             if seznam[nasprotnik] == "":    
                 return nasprotnik
 #preveri zmago
-    for i in dvavrsti_8:
+    for i in dvavrsta_8:
         if seznam[i[0]] == seznam[i[1]] == "O":
             nasprotnik = 8
             if seznam[nasprotnik] == "":    
@@ -135,25 +135,32 @@ def izbira_O():
             
 
 def klik(i):    
-    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H
+    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H, vrsta
     stop = ""
-    if gumbi[i]["text"] == "":
-        seznam[i] = igralec
-        gumbi[i]["text"] = seznam[i]
-        stop = izenaceno()
-        if stop == "JA":
-            return None
-        if stop == "KONEC":
-            zmagovalec=zmaga()
-            if zmagovalec:
-                label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
-                for g in gumbi:
-                    g.config(state="disable")
-            return
-            
+    if vrsta%2 == 0:
+        vrsta += 1
+        if gumbi[i]["text"] == "":
+            seznam[i] = igralec
+            gumbi[i]["text"] = seznam[i]
+            stop = izenaceno()
+            if stop == "JA":
+                return None
+            if stop == "KONEC":
+                zmagovalec=zmaga()
+                if zmagovalec:
+                    label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
+                    for g in gumbi:
+                        g.config(state="disable")
+                return
+    if vrsta%2 == 1:
+        vrsta += 1
         nasprotnik = izbira_O()
         seznam[nasprotnik] = "O"
         gumbi[nasprotnik]["text"] = seznam[nasprotnik]
+        
+        stop = izenaceno()
+        if stop == "JA":
+            return None
 
         
         print(seznam)
@@ -348,10 +355,15 @@ def zmaga():
     
 
 def reset():
-    global igralec, seznam, zacetek, H
-    
-    igralec = "X"
-    label_zacetek.config(text=f"Začne: {igralec}") 
+    global igralec, seznam, H, restart, vrsta
+    if restart %2 == 0:
+        zacne = "O"
+        vrsta = 1
+    else:
+        zacne = "X"
+        vrsta = 2
+    restart+=1
+    label_zacetek.config(text=f"Začne: {zacne}") 
     label.config(text="")
     for gumb in gumbi:
         gumb.config(text="", state="normal")
@@ -364,7 +376,7 @@ def reset():
     
         
 def izenaceno():
-    global seznam, dif, d, player1
+    global seznam, dif, d, player1, vrsta
     if seznam.count("") == 0:
         z = zmaga()
         if z == "X" or z =="O":
@@ -436,9 +448,10 @@ okno = tk.Tk()
 okno.title("polje")
 okno.configure(bg="#f0f0f0")
 
+restart = 0
+vrsta = 0
 H=0
 nasprotnik = ""
-zacetek = 0
 player1 = 0
 player2 = 0
 dif = 0
