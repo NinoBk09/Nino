@@ -132,11 +132,11 @@ def izbira_O():
             return opponent_O
     
 def klik(i):    
-    global playing_field, player, board, d, X_wins, O_wins, draw, heuristics, turn_X_O , restart, reset_O_start, win_row
+    global playing_field, player, board, d, X_wins, O_wins, draw, heuristics, turn_X , restart, reset_O_start, win_row
     heuristics = 0
     stop_if_draw = ""
     heuristics_regulation_3_3 = 0
-    if turn_X_O  ==  True:
+    if turn_X  ==  True:
         if playing_field[i]["text"] == "":
             heuristics_regulation_3_3 += 1
             board[i] = player
@@ -144,7 +144,7 @@ def klik(i):
             stop_if_draw = draw()
             if stop_if_draw == True:
                 return None
-        turn_X_O  = False
+        turn_X  = False
         heuristics_function()
 
     dont_place_O = win()
@@ -153,7 +153,7 @@ def klik(i):
 #Nasprotnik   
     if heuristics_regulation_3_3 == 1 or reset_O_start == 0:
         reset_O_start = 1
-        if turn_X_O  == False:
+        if turn_X  == False:
             opponent_O = izbira_O()
             board[opponent_O] = "O"
             playing_field[opponent_O]["text"] = board[opponent_O]
@@ -162,7 +162,7 @@ def klik(i):
                 return None
         heuristics_function()
         win()
-    turn_X_O  = True
+    turn_X  = True
     
     d = {
         'stanje': board,
@@ -170,12 +170,12 @@ def klik(i):
         'win_O': O_wins,
         'draw': draws,
         'heuristics': heuristics,
-        'na_vrsti': turn_X_O ,
+        'na_vrsti': turn_X ,
         'zacne': restart,
         }
         
 def win():
-    global playing_field, X_wins, O_wins, turn_X_O, heuristics_regulation_3_3, win_row
+    global playing_field, X_wins, O_wins, turn_X, heuristics_regulation_3_3, win_row
     for k in win_row:
         if playing_field[k[0]]["text"] == "X" and playing_field[k[1]]["text"] == "X" and playing_field[k[2]]["text"] == "X":
             X_wins += 1
@@ -211,7 +211,7 @@ def heuristics_function():
             heuristics+=99999
         if (playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == "" and playing_field[i[2]]['text'] == "") or (playing_field[i[1]]['text'] == "O" and playing_field[i[0]]['text'] == "" and playing_field[i[2]]['text'] == "") or (playing_field[i[2]]['text'] == "O" and playing_field[i[0]]['text'] == "" and playing_field[i[1]]['text'] == ""):
             heuristics-=1
-        if (playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == "O" and playing_field[i[2]]['text'] == "") or (playing_field[i[1]]['text'] == "O" and playing_field[i[2]]['text'] == "O" and playing_field[i[0]]['text'] == "") or (playing_field[i[2]]['text'] == "O" and playing_field[i[1]]['text'] == "O" and playing_field[i[1]]['text'] == ""):
+        if (playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == "O" and playing_field[i[2]]['text'] == "") or (playing_field[i[1]]['text'] == "O" and playing_field[i[2]]['text'] == "O" and playing_field[i[0]]['text'] == "") or (playing_field[i[2]]['text'] == "O" and playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == ""):
             heuristics-=10
         if playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == "O" and playing_field[i[2]]['text'] == "O":
             heuristics-=99999
@@ -219,15 +219,15 @@ def heuristics_function():
     return heuristics
 
 def reset():
-    global player, board, heuristics, restart, turn_X_O , reset_O_start
+    global player, board, heuristics, restart, turn_X , reset_O_start
     if restart == 1:
         zacne = "O"
-        turn_X_O  = False
+        turn_X  = False
         reset_O_start = 0
         restart = 0
     else:
         zacne = "X"
-        turn_X_O  = True
+        turn_X  = True
         restart = 1
     label_zacetek.config(text=f"Začne: {zacne}") 
     label.config(text="")
@@ -242,7 +242,7 @@ def reset():
 
         
 def draw():
-    global board, draws, d, X_wins, turn_X_O 
+    global board, draws, d, X_wins, turn_X 
     if board.count("") == 0:
         draws += 1
         d['draw'] = draws
@@ -261,7 +261,7 @@ def shrani():
         'win_O': O_wins,
         'draw': draws,
         'heuristics': heuristics,
-        'na_vrsti': turn_X_O ,
+        'na_vrsti': turn_X ,
         'zacne': restart,
         }
     
@@ -302,7 +302,7 @@ def nalozi():
                 'win_O': O_wins,
                 'draw': draws,
                 'heuristics': heuristics,
-                'na_vrsti': turn_X_O ,
+                'na_vrsti': turn_X ,
                 'zacne': restart,
                 }
         except:
@@ -316,7 +316,7 @@ okno.configure(bg="#f0f0f0")
 win_row = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
 reset_O_start = 1
 restart = 1
-turn_X_O  = True
+turn_X  = True
 heuristics=0
 opponent_O = ""
 X_wins = 0
