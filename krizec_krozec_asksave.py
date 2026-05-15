@@ -6,400 +6,263 @@ from tkinter import messagebox
 import random
 
 def izbira_O():
-    global seznam
-    nasprotnik = ""
-    dvavrsta_0 = [[3,6],[4,8],[1,2]]
-    dvavrsta_1 = [[0,2],[4,7]]
-    dvavrsta_2 = [[4,6],[5,8],[0,1]]
-    dvavrsta_3 = [[0,6],[4,5]]
-    dvavrsta_4 = [[1,7],[3,5],[0,8],[2,6]]
-    dvavrsta_5 = [[3,4],[2,8]]
-    dvavrsta_6 = [[0,3],[2,4],[7,8]]
-    dvavrsta_7 = [[1,4],[6,8]]
-    dvavrsta_8 = [[6,7],[0,4],[2,5]]
+    global board
+    opponent_O = ""
+    two_in_row_0 = [[3,6],[4,8],[1,2]]
+    two_in_row_1 = [[0,2],[4,7]]
+    two_in_row_2 = [[4,6],[5,8],[0,1]]
+    two_in_row_3 = [[0,6],[4,5]]
+    two_in_row_4 = [[1,7],[3,5],[0,8],[2,6]]
+    two_in_row_5 = [[3,4],[2,8]]
+    two_in_row_6 = [[0,3],[2,4],[7,8]]
+    two_in_row_7 = [[1,4],[6,8]]
+    two_in_row_8 = [[6,7],[0,4],[2,5]]
 
-#preveri blokado
-    for i in dvavrsta_0:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 0
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
 #preveri zmago             
-    for i in dvavrsta_0:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 0
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri blokado
-    for i in dvavrsta_1:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 1
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
+    for i in two_in_row_0:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 0
+            if board[opponent_O] == "":    
+                return opponent_O
 #preveri zmago
-    for i in dvavrsta_1:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 1
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri blokado
-    for i in dvavrsta_2:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 2
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
+    for i in two_in_row_1:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 1
+            if board[opponent_O] == "":    
+                return opponent_O
 #preveri zmago
-    for i in dvavrsta_2:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 2
-            if seznam[nasprotnik] == "":    
-                return nasprotnik            
+    for i in two_in_row_2:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 2
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri zmago
+    for i in two_in_row_3:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 3
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri zmago
+    for i in two_in_row_4:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 4
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri zmago
+    for i in two_in_row_5:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 5
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri zmago
+    for i in two_in_row_6:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 6
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri zmago
+    for i in two_in_row_7:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 7
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri zmago
+    for i in two_in_row_8:
+        if board[i[0]] == board[i[1]] == "O":
+            opponent_O = 8
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri blokado
+    for i in two_in_row_0:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 0
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri blokado
+    for i in two_in_row_1:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 1
+            if board[opponent_O] == "":    
+                return opponent_O
+#preveri blokado
+    for i in two_in_row_2:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 2
+            if board[opponent_O] == "":    
+                return opponent_O
 #preveri blokado            
-    for i in dvavrsta_3:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 3
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri zmago
-    for i in dvavrsta_3:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 3
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
+    for i in two_in_row_3:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 3
+            if board[opponent_O] == "":    
+                return opponent_O
 #preveri blokado
-    for i in dvavrsta_4:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 4
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri zmago
-    for i in dvavrsta_4:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 4
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
+    for i in two_in_row_4:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 4
+            if board[opponent_O] == "":    
+                return opponent_O
 #preveri blokado
-    for i in dvavrsta_5:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 5
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri zmago
-    for i in dvavrsta_5:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 5
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
+    for i in two_in_row_5:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 5
+            if board[opponent_O] == "":    
+                return opponent_O
 #preveri blokado
-    for i in dvavrsta_6:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 6
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri zmago
-    for i in dvavrsta_6:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 6
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
+    for i in two_in_row_6:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 6
+            if board[opponent_O] == "":    
+                return opponent_O
 #preveri blokado
-    for i in dvavrsta_7:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 7
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri zmago
-
-    for i in dvavrsta_7:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 7
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
+    for i in two_in_row_7:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 7
+            if board[opponent_O] == "":    
+                return opponent_O
 #preveri blokado
-    for i in dvavrsta_8:
-        if seznam[i[0]] == seznam[i[1]] == "X":
-            nasprotnik = 8
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
-#preveri zmago
-    for i in dvavrsta_8:
-        if seznam[i[0]] == seznam[i[1]] == "O":
-            nasprotnik = 8
-            if seznam[nasprotnik] == "":    
-                return nasprotnik
+    for i in two_in_row_8:
+        if board[i[0]] == board[i[1]] == "X":
+            opponent_O = 8
+            if board[opponent_O] == "":    
+                return opponent_O
     while True:
-        nasprotnik = random.randint(0,8)
-        if gumbi[nasprotnik]['text'] == '':
-            return nasprotnik
-        
-            
-
+        opponent_O = random.randint(0,8)
+        if playing_field[opponent_O]['text'] == '':
+            return opponent_O
+    
 def klik(i):    
-    global gumbi, igralec, seznam, d, player1, player2, izenaceno, H, vrsta
-    stop = ""
-    if vrsta%2 == 0:
-        vrsta += 1
-        if gumbi[i]["text"] == "":
-            seznam[i] = igralec
-            gumbi[i]["text"] = seznam[i]
-            stop = izenaceno()
-            if stop == "JA":
+    global playing_field, player, board, d, X_wins, O_wins, draw, heuristics, turn_X , restart, reset_O_start, win_row
+    heuristics = 0
+    stop_if_draw = ""
+    heuristics_regulation_3_3 = 0
+    if turn_X  ==  True:
+        if playing_field[i]["text"] == "":
+            heuristics_regulation_3_3 += 1
+            board[i] = player
+            playing_field[i]["text"] = board[i]
+            stop_if_draw = draw()
+            if stop_if_draw == True:
                 return None
-            if stop == "KONEC":
-                zmagovalec=zmaga()
-                if zmagovalec:
-                    label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
-                    for g in gumbi:
-                        g.config(state="disable")
-                return
-    if vrsta%2 == 1:
-        vrsta += 1
-        nasprotnik = izbira_O()
-        seznam[nasprotnik] = "O"
-        gumbi[nasprotnik]["text"] = seznam[nasprotnik]
-        
-        stop = izenaceno()
-        if stop == "JA":
-            return None
+        turn_X  = False
+        heuristics_function()
 
-        
-        print(seznam)
-        zmagovalec=zmaga()
-        if zmagovalec:
-            label.config(text=f"Zmaga {zmagovalec}", fg="lightgreen") 
-            for g in gumbi:
-                g.config(state="disable")
-
-# h za X 
-        if i == 0:
-            if seznam[1] == "X" or seznam[1] == "":
-                if seznam[2] == "X" or seznam[2] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-            if seznam[3] == "X" or seznam[3] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1           
-        if i == 1:
-            if seznam[0] == "X" or seznam[0] == "":
-                if seznam[2] == "X" or seznam[2] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[7] == "X" or seznam[7] == "":
-                    H+=1       
-        if i == 2:
-            if seznam[1] == "X" or seznam[1] == "":
-                if seznam[0] == "X" or seznam[0] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1
-            if seznam[5] == "X" or seznam[5] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1  
-        if i == 3:
-            if seznam[0] == "X" or seznam[0] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[5] == "X" or seznam[5] == "":
-                    H+=1  
-        if i == 4:
-            if seznam[0] == "X" or seznam[0] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-            if seznam[1] == "X" or seznam[1] == "":
-                if seznam[7] == "X" or seznam[7] == "":
-                    H+=1
-            if seznam[2] == "X" or seznam[2] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1
-            if seznam[3] == "X" or seznam[3] == "":
-                if seznam[5] == "X" or seznam[5] == "":
-                    H+=1
-        if i == 5:
-            if seznam[2] == "X" or seznam[2] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-            if seznam[3] == "X" or seznam[3] == "":
-                if seznam[5] == "X" or seznam[5] == "":
-                    H+=1
-        if i == 6:
-            if seznam[0] == "X" or seznam[0] == "":
-                if seznam[3] == "X" or seznam[3] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[2] == "X" or seznam[2] == "":
-                    H+=1
-            if seznam[7] == "X" or seznam[7] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-        if i == 7:
-            if seznam[6] == "X" or seznam[6] == "":
-                if seznam[8] == "X" or seznam[8] == "":
-                    H+=1
-            if seznam[1] == "X" or seznam[1] == "":
-                if seznam[4] == "X" or seznam[4] == "":
-                    H+=1
-        if i == 8:
-            if seznam[2] == "X" or seznam[2] == "":
-                if seznam[5] == "X" or seznam[5] == "":
-                    H+=1
-            if seznam[4] == "X" or seznam[4] == "":
-                if seznam[0] == "X" or seznam[0] == "":
-                    H+=1
-            if seznam[7] == "X" or seznam[7] == "":
-                if seznam[6] == "X" or seznam[6] == "":
-                    H+=1
-# h za O
-        if  nasprotnik == 1:
-            if seznam[0] == "O" or seznam[0] == "":
-                if seznam[2] == "O" or seznam[2] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[7] == "O" or seznam[7] == "":
-                    H-=1       
-        if nasprotnik == 2:
-            if seznam[1] == "O" or seznam[1] == "":
-                if seznam[0] == "O" or seznam[0] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[6] == "O" or seznam[6] == "":
-                    H-=1
-            if seznam[5] == "O" or seznam[5] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1  
-        if nasprotnik == 3:
-            if seznam[0] == "O" or seznam[0] == "":
-                if seznam[6] == "O" or seznam[6] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[5] == "O" or seznam[5] == "":
-                    H-=1  
-        if nasprotnik == 4:
-            if seznam[0] == "O" or seznam[0] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1
-            if seznam[1] == "O" or seznam[1] == "":
-                if seznam[7] == "O" or seznam[7] == "":
-                    H-=1
-            if seznam[2] == "O" or seznam[2] == "":
-                if seznam[6] == "O" or seznam[6] == "":
-                    H-=1
-            if seznam[3] == "O" or seznam[3] == "":
-                if seznam[5] == "O" or seznam[5] == "":
-                    H-=1
-        if nasprotnik == 5:
-            if seznam[2] == "O" or seznam[2] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1
-            if seznam[3] == "O" or seznam[3] == "":
-                if seznam[5] == "O" or seznam[5] == "":
-                    H-=1
-        if nasprotnik == 6:
-            if seznam[0] == "O" or seznam[0] == "":
-                if seznam[3] == "O" or seznam[3] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[2] == "O" or seznam[2] == "":
-                    H-=1
-            if seznam[7] == "O" or seznam[7] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1
-        if nasprotnik == 7:
-            if seznam[6] == "O" or seznam[6] == "":
-                if seznam[8] == "O" or seznam[8] == "":
-                    H-=1
-            if seznam[1] == "O" or seznam[1] == "":
-                if seznam[4] == "O" or seznam[4] == "":
-                    H-=1
-        if nasprotnik == 8:
-            if seznam[2] == "O" or seznam[2] == "":
-                if seznam[5] == "O" or seznam[5] == "":
-                    H-=1
-            if seznam[4] == "O" or seznam[4] == "":
-                if seznam[0] == "O" or seznam[0] == "":
-                    H-=1
-            if seznam[7] == "O" or seznam[7] == "":
-                if seznam[6] == "O" or seznam[6] == "":
-                    H-=1
-        print(f"h je {H}")
+    dont_place_O = win()
+    if dont_place_O == True:
+        return
+#Nasprotnik   
+    if heuristics_regulation_3_3 == 1 or reset_O_start == 0:
+        reset_O_start = 1
+        if turn_X  == False:
+            opponent_O = izbira_O()
+            board[opponent_O] = "O"
+            playing_field[opponent_O]["text"] = board[opponent_O]
+            stop_if_draw = draw()
+            if stop_if_draw == True:
+                return None
+        heuristics_function()
+        win()
+    turn_X  = True
     
     d = {
-                 'stanje': seznam,
-                 'zmaga_X': player1,
-                 'zmaga_y': player2,
-                 'izenaceno': dif,
-                 'H': H
-            }
-              
+        'stanje': board,
+        'win_X': X_wins,
+        'win_O': O_wins,
+        'draw': draws,
+        'heuristics': heuristics,
+        'na_vrsti': turn_X ,
+        'zacne': restart,
+        }
         
-def zmaga():
-    global gumbi, player1, player2
-    kombinacije = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
-    for k in kombinacije:
-        if gumbi[k[0]]["text"] == "X" and gumbi[k[1]]["text"] == "X" and gumbi[k[2]]["text"] == "X":
-            player1 += 1
-            d['zmaga_x'] = player1
-            label_x.config(text=f"X zmage: {player1}")
-            return "X"
-    for k in kombinacije:
-        if gumbi[k[0]]["text"] == "O" and gumbi[k[1]]["text"] == "O" and gumbi[k[2]]["text"] == "O":
-            player2 += 1
-            d['zmaga_y'] = player2
-            label_o.config(text=f"O zmage: {player2}")
-            return "O"
-    return None
+def win():
+    global playing_field, X_wins, O_wins, turn_X, heuristics_regulation_3_3, win_row
+    for k in win_row:
+        if playing_field[k[0]]["text"] == "X" and playing_field[k[1]]["text"] == "X" and playing_field[k[2]]["text"] == "X":
+            X_wins += 1
+            winer = "X"
+            d['win_X'] = X_wins
+            label_x.config(text=f"X zmage: {X_wins}")
+            label.config(text=f"Zmaga {winer}", fg="lightgreen") 
+            for g in playing_field:
+                g.config(state="disable")
+            heuristics_regulation_3_3 = 0
+            return True
+    for k in win_row:
+        if playing_field[k[0]]["text"] == "O" and playing_field[k[1]]["text"] == "O" and playing_field[k[2]]["text"] == "O":
+            O_wins += 1
+            winer = "O"
+            d['win_O'] = O_wins
+            label_o.config(text=f"O zmage: {O_wins}")
+            label.config(text=f"Zmaga {winer}", fg="lightgreen") 
+            for g in playing_field:
+                g.config(state="disable")
+            heuristics_regulation_3_3 = 0
         
+def heuristics_function():
+    global playing_field, win_row, heuristics, playing_field, board
     
+    heuristics = 0
+    for i in win_row:
+        if (playing_field[i[0]]['text'] == "X" and playing_field[i[1]]['text'] == "" and playing_field[i[2]]['text'] == "") or (playing_field[i[1]]['text'] == "X" and playing_field[i[0]]['text'] == "" and playing_field[i[2]]['text'] == "") or (playing_field[i[2]]['text'] == "X" and playing_field[i[0]]['text'] == "" and playing_field[i[1]]['text'] == ""):
+            heuristics+=1
+        if (playing_field[i[0]]['text'] == "X" and playing_field[i[1]]['text'] == "X" and playing_field[i[2]]['text'] == "") or (playing_field[i[1]]['text'] == "X" and playing_field[i[2]]['text'] == "X" and playing_field[i[0]]['text'] == "") or (playing_field[i[2]]['text'] == "X" and playing_field[i[1]]['text'] == "X" and playing_field[i[1]]['text'] == ""):
+            heuristics+=10
+        if playing_field[i[0]]['text'] == "X" and playing_field[i[1]]['text'] == "X" and playing_field[i[2]]['text'] == "X":
+            heuristics+=99999
+        if (playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == "" and playing_field[i[2]]['text'] == "") or (playing_field[i[1]]['text'] == "O" and playing_field[i[0]]['text'] == "" and playing_field[i[2]]['text'] == "") or (playing_field[i[2]]['text'] == "O" and playing_field[i[0]]['text'] == "" and playing_field[i[1]]['text'] == ""):
+            heuristics-=1
+        if (playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == "O" and playing_field[i[2]]['text'] == "") or (playing_field[i[1]]['text'] == "O" and playing_field[i[2]]['text'] == "O" and playing_field[i[0]]['text'] == "") or (playing_field[i[2]]['text'] == "O" and playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == ""):
+            heuristics-=10
+        if playing_field[i[0]]['text'] == "O" and playing_field[i[1]]['text'] == "O" and playing_field[i[2]]['text'] == "O":
+            heuristics-=99999
+    print(f"heuristics je: {heuristics}, board: { board }")
+    return heuristics
 
 def reset():
-    global igralec, seznam, H, restart, vrsta
-    if restart %2 == 0:
+    global player, board, heuristics, restart, turn_X , reset_O_start
+    if restart == 1:
         zacne = "O"
-        vrsta = 1
+        turn_X  = False
+        reset_O_start = 0
+        restart = 0
     else:
         zacne = "X"
-        vrsta = 2
-    restart+=1
+        turn_X  = True
+        restart = 1
     label_zacetek.config(text=f"Začne: {zacne}") 
     label.config(text="")
-    for gumb in gumbi:
+    for gumb in playing_field:
         gumb.config(text="", state="normal")
-    for i in range(len(seznam)-1,-1,-1):
-        if seznam[i] != "":
-            seznam[i] = ""
-    print(seznam)
+    for i in range(len(board)-1,-1,-1):
+        if board[i] != "":
+            board[i] = ""
+    print(board)
     label.config(bg="#f0f0f0")
-    H = 0
-    
+    heuristics = 0
+
         
-def izenaceno():
-    global seznam, dif, d, player1, vrsta
-    if seznam.count("") == 0:
-        z = zmaga()
-        if z == "X" or z =="O":
-            player1 -= 1
-            return "KONEC"
-        else:
-            dif += 1
-            d['izenaceno'] = dif
-            label_izenaceno.config(text=f"izenačeno: {dif}")
-            label.config(text="Izenačeno", bg="yellow")
-            for g in gumbi:
-                g.config(state="disable")
-            return "JA"
+def draw():
+    global board, draws, d, X_wins, turn_X 
+    if board.count("") == 0:
+        draws += 1
+        d['draw'] = draws
+        label_draw.config(text=f"izenačeno: {draws}")
+        label.config(text="Izenačeno", bg="yellow")
+        for g in playing_field:
+            g.config(state="disable")
+        return True
             
 def shrani():
     global d
     
     d = {
-        'stanje': seznam,
-        'zmaga_x': player1,
-        'zmaga_y': player2,
-        'izenaceno': dif,
-        'H': H
+        'stanje': board,
+        'win_X': X_wins,
+        'win_O': O_wins,
+        'draw': draws,
+        'heuristics': heuristics,
+        'na_vrsti': turn_X ,
+        'zacne': restart,
         }
     
     files = [('JSON dokument', '*.json'), ('Vse datoteke', '*.*')]
@@ -409,36 +272,38 @@ def shrani():
     label.config(text="Shranjeno", bg="lightgreen")
 
 def nalozi():
-    global d, seznam, dif, player2, player1, H
+    global d, board, draws, O_wins, X_wins, heuristics
     file = askopenfile(filetypes=[('JSON dokument', '*.json'), ('Vse datoteke', '*.*')])
     if file:
         try: 
             d = json.load(file)
-            seznam = d['stanje']
+            board = d['stanje']
             for i in range(9):
-                    gumbi[i].config(text=seznam[i],state="normal")
-            z = zmaga()
+                    playing_field[i].config(text=board[i],state="normal")
+            z = win()
             if z == "X" or z == "O":
-                seznam = ["","","","","","","","",""]
+                board = ["","","","","","","","",""]
                 for i in range(9):
-                    gumbi[i].config(text=seznam[i],state="normal")
-            label_izenaceno.config(text=f"izenačeno: {d['izenaceno']}")
-            label_o.config(text=f"O zmage: {d['zmaga_y']}")
-            label_x.config(text=f"X zmage: {d['zmaga_x']}")
-            player1 = d['zmaga_x']
-            player2 = d['zmaga_y']
-            dif = d['izenaceno']
-            H = d['H'] 
+                    playing_field[i].config(text=board[i],state="normal")
+            label_draw.config(text=f"izenačeno: {d['draw']}")
+            label_o.config(text=f"O zmage: {d['win_O']}")
+            label_x.config(text=f"X zmage: {d['win_X']}")
+            X_wins = d['win_X']
+            O_wins = d['win_O']
+            draws = d['draw']
+            heuristics = d['heuristics'] 
             label.config(text="datoteka uspešno naložena", bg="lightgreen", fg="white")
             file.close()
         except FileNotFoundError:
             messagebox.showwarning("Error", "Datoteke nismo našli, nalagam novo.")
             d = {
-                     'stanje': seznam,
-                     'zmaga_X': player1,
-                     'zmaga_y': player2,
-                     'izenaceno': dif,
-                     'H': H,
+                'stanje': board,
+                'win_X': X_wins,
+                'win_O': O_wins,
+                'draw': draws,
+                'heuristics': heuristics,
+                'na_vrsti': turn_X ,
+                'zacne': restart,
                 }
         except:
             messagebox.showwarning("Error", "Problme pri nalaganju datoteke.")
@@ -448,57 +313,59 @@ okno = tk.Tk()
 okno.title("polje")
 okno.configure(bg="#f0f0f0")
 
-restart = 0
-vrsta = 0
-H=0
-nasprotnik = ""
-player1 = 0
-player2 = 0
-dif = 0
-gumbi=[]
-igralec = "X"
+win_row = [[0,1,2],[3,4,5],[6,7,8],[0,3,6],[1,4,7],[2,5,8],[0,4,8],[2,4,6]]
+reset_O_start = 1
+restart = 1
+turn_X  = True
+heuristics=0
+opponent_O = ""
+X_wins = 0
+O_wins = 0
+draws = 0
+playing_field=[]
+player = "X"
 d=0
 
-label_zacetek = tk.Label(okno, text=f"Začne: {igralec}", height=3, width=9, font=("Arial", 15, "bold"), bg="#E6E6E6",relief="flat")
+label_zacetek = tk.Label(okno, text=f"Začne: {player}", height=3, width=9, font=("Arial", 15, "bold"), bg="#E6E6E6",relief="flat")
 label_zacetek.pack()
 
-okvir_gumbi = tk.Frame(okno)
-okvir_gumbi.pack(pady=10)
+frame_playing_field = tk.Frame(okno)
+frame_playing_field.pack(pady=10)
 
 for i in range(9):
-    gumb = tk.Button(okvir_gumbi, height=3, width=6, command=lambda i=i: klik(i), bg="#cccccc", font=("Arial", 15, "bold"))
+    gumb = tk.Button(frame_playing_field, height=3, width=6, command=lambda i=i: klik(i), bg="#cccccc", font=("Arial", 15, "bold"))
     gumb.grid(row=i//3, column=i%3,)
-    gumbi.append(gumb)
+    playing_field.append(gumb)
 
-okvir_spodaj = tk.Frame(okno)
-okvir_spodaj.pack(pady=20)
+frame_spodaj = tk.Frame(okno)
+frame_spodaj.pack(pady=20)
 
-gumb1 = tk.Button(okvir_spodaj, height=3, width=9,bg="#687982", command=reset, text="Nova igra", fg="white",  relief="flat", bd=0, highlightthickness=0,font=("Helvetica", 10, "bold"))
+gumb1 = tk.Button(frame_spodaj, height=3, width=9,bg="#687982", command=reset, text="Nova igra", fg="white",  relief="flat", bd=0, highlightthickness=0,font=("helvetica", 10, "bold"))
 gumb1.grid(column=1, row=0, padx=5)
 
-gumb_shrani = tk.Button(okvir_spodaj, height=3, width=9,bg="#688271", fg="white", command=shrani, text="Shrani", relief="flat", bd=0, font=("Helvetica", 10, "bold"), highlightthickness=0)
-gumb_shrani.grid(column=2, row=0, padx=5)
+button_save = tk.Button(frame_spodaj, height=3, width=9,bg="#688271", fg="white", command=shrani, text="Shrani", relief="flat", bd=0, font=("helvetica", 10, "bold"), highlightthickness=0)
+button_save.grid(column=2, row=0, padx=5)
 
-gumb_nalozi = tk.Button(okvir_spodaj, text="Naloži", height=3, width=9, bg="#716882", fg="white", command=nalozi, relief="flat", bd=0, font=("Helvetica", 10, "bold"), highlightthickness=0)
-gumb_nalozi.grid(column=3, row=0, padx=5)
+button_load = tk.Button(frame_spodaj, text="Naloži", height=3, width=9, bg="#716882", fg="white", command=nalozi, relief="flat", bd=0, font=("helvetica", 10, "bold"), highlightthickness=0)
+button_load.grid(column=3, row=0, padx=5)
 
-okvir_label = tk.Frame(okno)
-okvir_label.pack(pady=10,)
+frame_label = tk.Frame(okno)
+frame_label.pack(pady=10,)
 
-label = tk.Label(okvir_label, text="", pady="10",font=("Helvetica", 14, "bold"))
+label = tk.Label(frame_label, text="", pady="10",font=("helvetica", 14, "bold"))
 label.grid(column=2, row=1)
 
-okvir_rezultat = tk.Frame(okno)
-okvir_rezultat.pack()
+frame_rezultat = tk.Frame(okno)
+frame_rezultat.pack()
 
-label_x = tk.Label(okvir_rezultat, text=f"X zmage: {player1}", height=3, width=9, font="Segoe_UI",)
+label_x = tk.Label(frame_rezultat, text=f"X zmage: {X_wins}", height=3, width=9, font="Segoe_UI",)
 label_x.grid(row=0,column=0, sticky="w")
 
-label_o = tk.Label(okvir_rezultat, text=f"O zmage: {player2}", height=3, width=9, font="Segoe_UI")
+label_o = tk.Label(frame_rezultat, text=f"O zmage: {O_wins}", height=3, width=9, font="Segoe_UI")
 label_o.grid(row=1,column=0, sticky="w")
 
-label_izenaceno = tk.Label(okvir_rezultat, text=f"izenačeno: {dif}", height=3, width=9, font="Segoe_UI")
-label_izenaceno.grid(row=2,column=0, sticky="w")
+label_draw = tk.Label(frame_rezultat, text=f"izenačeno: {draws}", height=3, width=9, font="Segoe_UI")
+label_draw.grid(row=2,column=0, sticky="w")
 
-seznam = ["","","","","","","","",""]
+board = ["","","","","","","","",""]
 okno.mainloop()
